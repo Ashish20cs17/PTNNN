@@ -65,27 +65,25 @@ function FeatureGrid() {
         />
       ))}
 
-      <style jsx>{`
-        .features-section {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 20px;
-          margin-top: 40px;
-        }
-        @media (max-width: 991px) {
-          .features-section {
-            flex-direction: column;
-            align-items: center;
-          }
-        }
-        @media (max-width: 640px) {
-          .features-section {
-            flex-direction: column;
-            align-items: center;
-          }
-        }
-      `}</style>
+<style jsx>{`
+  .features-section {
+  margin-left:46px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 640px) {
+    .features-section {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 16px; /* Left & right padding for mobile */
+    }
+  }
+`}</style>
+
     </section>
   );
 }
