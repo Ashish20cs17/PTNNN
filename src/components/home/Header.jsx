@@ -53,6 +53,7 @@ function Header() {
           }
         }
         .logo {
+            margin-left: 45px;
           width: 353px;
           height: 60px;
         }
@@ -63,6 +64,7 @@ function Header() {
           line-height: 64px;
           letter-spacing: -1.2px;
           color: #000;
+          margin-left: 40px;
           margin-top: 20px;
         }
         .highlight {
