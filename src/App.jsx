@@ -13,10 +13,10 @@ const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem("user");
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
-
 const AppContent = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("user");
 
   useEffect(() => {
     window.appNavigate = (page) => navigate(`/${page}`);
@@ -25,13 +25,19 @@ const AppContent = () => {
 
   return (
     <>
-      {location.pathname !== '/login' && localStorage.getItem("user") && (
+      {location.pathname !== '/login' && isAuthenticated && (
         <Navbar onNavigate={(page) => navigate(`/${page}`)} />
       )}
       <Routes>
-        <Route path="/login" element={<Login onLoginSuccess={() => navigate('/')} />} />
-        <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/start" element={<ProtectedRoute><Start /></ProtectedRoute>} />
+        <Route path="/login" element={<Login onLoginSuccess={() => navigate('/start')} />} />
+        <Route path="/" element={<Home />} />
+        
+        {/* Conditional rendering based on authentication */}
+        <Route
+          path="/start"
+          element={isAuthenticated ? <Start /> : <Navigate to="/login" />}
+        />
+
         <Route path="/practice" element={<ProtectedRoute><Quiz /></ProtectedRoute>} />
         <Route path="/progress" element={<ProtectedRoute><Progress /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/" />} />
@@ -39,6 +45,7 @@ const AppContent = () => {
     </>
   );
 };
+
 
 const App = () => (
   <Router>
