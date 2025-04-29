@@ -203,15 +203,32 @@ function ContactForm() {
           margin-top: 40px;
           background-color: #fafafa;
         }
-        .section-title {
-          font-family: "Space Grotesk", sans-serif;
-          font-size: 56px;
-          font-weight: 650;
-          line-height: 64px;
-          text-align: center;
-          color: #000;
-          margin: 0;
-        }
+       .section-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 56px;
+  font-weight: 650;
+  line-height: 64px;
+  text-align: center;
+  color: #000;
+  margin: 0;
+  padding: 0 16px; /* prevent text from hitting screen edges */
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 40px;
+    line-height: 36px;
+  }
+}
+
         .highlight {
           color: #38b6ff;
         }
